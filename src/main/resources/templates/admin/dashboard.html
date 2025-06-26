@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h2>Admin Dashboard</h2>
+    </header>
+
+    <form method="GET" th:action="@{/admin/dashboard}">
+        <!-- Filtro por nombre -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" th:value="${nombre}">
+
+        <!-- Filtro por edad -->
+        <label for="edad">Edad:</label>
+        <input type="number" name="edad" id="edad" th:value="${edad}">
+
+        <!-- Filtro por tipo de diabetes -->
+        <label for="tipo_diabetes">Tipo de Diabetes:</label>
+        <select name="tipo_diabetes" id="tipo_diabetes">
+            <option value="">Selecciona un tipo</option>
+            <option value="Tipo 1" th:selected="${tipo_diabetes == 'Tipo 1'}">Tipo 1</option>
+            <option value="Tipo 2" th:selected="${tipo_diabetes == 'Tipo 2'}">Tipo 2</option>
+            <option value="Gestacional" th:selected="${tipo_diabetes == 'Gestacional'}">Gestacional</option>
+        </select>
+
+        <!-- Filtro por tipo de ETS -->
+        <label for="tipo_ets">Tipo de ETS:</label>
+        <select name="tipo_ets" id="tipo_ets">
+            <option value="">Selecciona un tipo</option>
+            <option value="VIH" th:selected="${tipo_ets == 'VIH'}">VIH</option>
+            <option value="Sífilis" th:selected="${tipo_ets == 'Sífilis'}">Sífilis</option>
+            <option value="Gonorrea" th:selected="${tipo_ets == 'Gonorrea'}">Gonorrea</option>
+            <option value="Otro" th:selected="${tipo_ets == 'Otro'}">Otro</option>
+        </select>
+
+        <!-- Filtro por presión arterial -->
+        <label for="presion_arterial">Presión Arterial:</label>
+        <input type="text" name="presion_arterial" id="presion_arterial" th:value="${presion_arterial}">
+
+        <!-- Filtro por peso -->
+        <label for="peso">Peso (kg):</label>
+        <input type="number" name="peso" id="peso" th:value="${peso}">
+
+        <!-- Filtro por altura -->
+        <label for="altura">Altura (cm):</label>
+        <input type="number" name="altura" id="altura" th:value="${altura}">
+
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <!-- Resultados -->
+    <h3>Formularios de Diabetes:</h3>
+    <ul>
+        <li th:each="formulario : ${formulariosDiabetes}">
+            <span th:text="${formulario.nombre}"></span> - <span th:text="${formulario.tipoDiabetes}"></span>
+        </li>
+    </ul>
+
+    <h3>Formularios de ETS:</h3>
+    <ul>
+        <li th:each="formulario : ${formulariosEts}">
+            <span th:text="${formulario.nombre}"></span> - <span th:text="${formulario.tipoEts}"></span>
+        </li>
+    </ul>
+
+    <h3>Formularios de Hipertensión:</h3>
+    <ul>
+        <li th:each="formulario : ${formulariosHipertension}">
+            <span th:text="${formulario.nombre}"></span> - 
+            <span th:text="${formulario.presionArterial}"></span> /
+            <span th:text="${formulario.peso}"></span> kg /
+            <span th:text="${formulario.altura}"></span> cm
+        </li>
+    </ul>
+
+    <h3>Formularios de Obesidad:</h3>
+    <ul>
+        <li th:each="formulario : ${formulariosObesidad}">
+            <span th:text="${formulario.nombre}"></span> -
+            <span th:text="${formulario.peso}"></span> kg /
+            <span th:text="${formulario.altura}"></span> cm
+        </li>
+    </ul>
+</div>
+</body>
+</html>

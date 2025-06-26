@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil</title>
+    <link rel="stylesheet" href="css/perfil.css">
+</head>
+
+<body>
+    <header>
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            Mi Perfil
+        </h2>
+    </header>
+
+    <main class="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Mensaje de éxito -->
+        <div id="success-message" class="mb-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded"
+            style="display: none;">
+            <!-- Mensaje de éxito dinámico -->
+            <p id="success-text">Operación exitosa</p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Menú lateral -->
+            <aside class="w-full md:w-1/4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Formularios</h3>
+                <a href="/formulario/diabetes" class="btn btn-primary">Formulario de Diabetes</a>
+                <a href="/formulario/ets" class="btn btn-primary">Formulario de ETS</a>
+                <a href="/formulario/hipertension" class="btn btn-primary">Formulario de Hipertensión</a>
+                <a href="/formulario/obesidad" class="btn btn-primary">Formulario de Obesidad</a>
+            </aside>
+
+            <!-- Contenido principal -->
+            <section class="w-full md:w-3/4 space-y-6">
+                <!-- Información del usuario -->
+                <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+                    <h3 class="text-lg font-medium mb-4 text-gray-900 dark:text-gray-100">Información de la Cuenta</h3>
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><strong>Nombre:</strong> Juan</li>
+                        <li><strong>Apellido:</strong> Pérez</li>
+                        <li><strong>Correo:</strong> juanperez@example.com</li>
+                        <li><strong>Rol:</strong> Usuario</li>
+                    </ul>
+                </div>
+
+                <!-- Mostrar el formulario correspondiente -->
+                <div id="formulario-content">
+                    <!-- Aquí iría el formulario dinámico dependiendo de la selección del usuario -->
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="mt-6 flex space-x-4">
+                    <form method="POST" action="/logout">
+                        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">
+                            Cerrar sesión
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Hippocardio</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <main>
+        <h1>Hippocardio - Registro</h1>
+        <div class="cuadro-registro">
+            <h4>Registrarse</h4>
+            <form action="/register" method="POST">
+                <input type="text" id="name" name="name" required placeholder="Nombre" value="">
+                <input type="text" id="lastname" name="lastname" required placeholder="Apellido" value="">
+                <input type="email" id="email" name="email" required placeholder="Correo electrónico" value="">
+                <input type="password" id="password" name="password" required placeholder="Contraseña">
+                <input type="password" id="password_confirmation" name="password_confirmation" required placeholder="Confirmar contraseña">
+
+                <button type="submit">Crear cuenta</button>
+            </form>
+            <p>¿Ya tienes una cuenta? <a href="/login">Iniciar sesión</a></p>
+        </div>
+    </main>
+</body>
+</html>

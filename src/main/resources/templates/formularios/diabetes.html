@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Diabetes</title>
+    <link rel="stylesheet" th:href="@{/css/formularios.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Formulario de Diabetes</h2>
+
+    <div th:if="${success}" style="color: green;" th:text="${success}"></div>
+
+    <div th:if="${#fields.hasErrors()}">
+        <ul style="color: red;">
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+        </ul>
+    </div>
+
+    <form th:action="@{/formulario/diabetes}" method="post" th:object="${diabetesForm}">
+        <label for="nombre">Nombre:</label>
+        <input type="text" th:field="*{nombre}" required><br><br>
+
+        <label for="edad">Edad:</label>
+        <input type="number" th:field="*{edad}" required><br><br>
+
+        <label for="correo">Correo:</label>
+        <input type="email" th:field="*{correo}" required><br><br>
+
+        <label for="tipo_diabetes">Tipo de diabetes:</label>
+        <select th:field="*{tipoDiabetes}" required>
+            <option value="">Selecciona un tipo</option>
+            <option value="Tipo 1">Tipo 1</option>
+            <option value="Tipo 2">Tipo 2</option>
+            <option value="Gestacional">Gestacional</option>
+        </select><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+</body>
+</html>
