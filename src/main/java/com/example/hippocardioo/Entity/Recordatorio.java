@@ -22,7 +22,6 @@ public class Recordatorio {
     @Column(name = "fecha")
     private LocalDateTime fecha;
 
-    // Getters y Setters
 
     public Long getId_recordatorio() {
         return id_recordatorio;

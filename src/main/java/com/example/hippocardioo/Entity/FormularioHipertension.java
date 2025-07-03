@@ -30,7 +30,6 @@ public class FormularioHipertension {
     @PositiveOrZero(message = "La altura debe ser positiva o cero")
     private Double altura;
 
-    // Getters y setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

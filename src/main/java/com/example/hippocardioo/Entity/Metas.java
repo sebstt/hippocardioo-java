@@ -25,7 +25,6 @@ public class Metas {
     @Column(name = "fecha")
     private LocalDateTime fecha;
 
-    // Getters y Setters
 
     public Long getId_metas() {
         return id_metas;

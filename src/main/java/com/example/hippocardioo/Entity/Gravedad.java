@@ -17,7 +17,6 @@ public class Gravedad {
     @Column(name = "descripcion_gravedad", nullable = false, length = 100)
     private String descripcion_gravedad;
 
-    // Getters y Setters
 
     public Long getId_gravedad() {
         return id_gravedad;

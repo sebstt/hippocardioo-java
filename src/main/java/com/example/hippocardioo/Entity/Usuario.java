@@ -3,37 +3,37 @@ package com.example.hippocardioo.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "users") // Asegúrate de que coincide con tu tabla real
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario", nullable = false)
-    private Long id_usuario;
+    @Column(name = "id") // Coincide con el nombre de la columna en la BD
+    private Long id;
 
-    @Column(name = "nombre", nullable = false, length = 100)
+    @Column(name = "name", nullable = false, length = 100)
     private String nombre;
 
-    @Column(name = "apellido1", nullable = false, length = 100)
-    private String apellido1;
+    @Column(name = "lastname", nullable = false, length = 100)
+    private String apellido;
 
-    @Column(name = "apellido2", nullable = false, length = 100)
-    private String apellido2;
-
-    @Column(name = "correo", nullable = false, length = 100)
+    @Column(name = "email", nullable = false, length = 100)
     private String correo;
 
-    @Column(name = "edad", nullable = false)
-    private Integer edad;
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "rol", nullable = false)
+    private String rol;
 
     // Getters y Setters
 
-    public Long getId_usuario() {
-        return id_usuario;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_usuario(Long id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -44,20 +44,12 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getApellido1() {
-        return apellido1;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellido1(String apellido1) {
-        this.apellido1 = apellido1;
-    }
-
-    public String getApellido2() {
-        return apellido2;
-    }
-
-    public void setApellido2(String apellido2) {
-        this.apellido2 = apellido2;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getCorreo() {
@@ -68,11 +60,19 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public Integer getEdad() {
-        return edad;
+    public String getPassword() {
+        return password;
     }
 
-    public void setEdad(Integer edad) {
-        this.edad = edad;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }

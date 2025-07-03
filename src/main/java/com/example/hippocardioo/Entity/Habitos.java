@@ -20,7 +20,6 @@ public class Habitos {
     @Column(name = "tipo_habitos", nullable = false, length = 100)
     private String tipo_habitos;
 
-    // Getters y Setters
 
     public Long getId_habitos() {
         return id_habitos;

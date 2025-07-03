@@ -16,29 +16,35 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    // Obtener todos los usuarios
     @GetMapping
     public List<Usuario> getAll() {
         return usuarioService.getAll();
     }
 
+    // Obtener un usuario por ID
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> getById(@PathVariable Long id) {
         Usuario usuario = usuarioService.getById(id);
         return (usuario != null) ? ResponseEntity.ok(usuario) : ResponseEntity.notFound().build();
     }
 
+    // Crear un nuevo usuario
     @PostMapping
     public ResponseEntity<Usuario> create(@RequestBody Usuario usuario) {
-        return ResponseEntity.ok(usuarioService.create(usuario));
+        Usuario nuevo = usuarioService.create(usuario);
+        return ResponseEntity.ok(nuevo);
     }
 
+    // Actualizar un usuario existente
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody Usuario usuario) {
-        usuario.setId_usuario(id);  // Setter corregido aquí
-        Usuario updated = usuarioService.update(usuario);
-        return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
+        usuario.setId(id); // ← Corrección aquí
+        Usuario actualizado = usuarioService.update(usuario);
+        return (actualizado != null) ? ResponseEntity.ok(actualizado) : ResponseEntity.notFound().build();
     }
 
+    // Eliminar un usuario por ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         Usuario usuario = usuarioService.getById(id);

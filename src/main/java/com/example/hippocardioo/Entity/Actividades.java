@@ -1,8 +1,7 @@
 package com.example.hippocardioo.Entity;
 
-import java.time.LocalDateTime;
-
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "actividades")
@@ -10,71 +9,69 @@ public class Actividades {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_actividades", nullable = false)
-    private Long id_actividades;
+    private Long id;
 
-    @Column(name = "nombre_actividades", nullable = false, length = 100)
-    private String nombre_actividades;
+    @Column(name = "nombre")
+    private String nombre;
 
-    @Column(name = "descripcion_actividades", nullable = false, length = 100)
-    private String descripcion_actividades;
+    @Column(name = "descripcion")
+    private String descripcion;
 
-    @Column(name = "tipo_actividades", nullable = false, length = 100)
-    private String tipo_actividades;
+    @Column(name = "tipo")
+    private String tipo;
 
     @Column(name = "fecha_inicio")
-    private LocalDateTime fecha_inicio;
+    private LocalDateTime fechaInicio;
 
     @Column(name = "fecha_fin")
-    private LocalDateTime fecha_fin;
+    private LocalDateTime fechaFin;
 
-    // ✅ Getters y Setters
-
-    public Long getId_actividades() {
-        return id_actividades;
+    // Getters y Setters
+    public Long getId() {
+        return id;
     }
 
-    public void setId_actividades(Long id_actividades) {
-        this.id_actividades = id_actividades;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNombre_actividades() {
-        return nombre_actividades;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombre_actividades(String nombre_actividades) {
-        this.nombre_actividades = nombre_actividades;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getDescripcion_actividades() {
-        return descripcion_actividades;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescripcion_actividades(String descripcion_actividades) {
-        this.descripcion_actividades = descripcion_actividades;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getTipo_actividades() {
-        return tipo_actividades;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipo_actividades(String tipo_actividades) {
-        this.tipo_actividades = tipo_actividades;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public LocalDateTime getFecha_inicio() {
-        return fecha_inicio;
+    public LocalDateTime getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setFecha_inicio(LocalDateTime fecha_inicio) {
-        this.fecha_inicio = fecha_inicio;
+    public void setFechaInicio(LocalDateTime fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
-    public LocalDateTime getFecha_fin() {
-        return fecha_fin;
+    public LocalDateTime getFechaFin() {
+        return fechaFin;
     }
 
-    public void setFecha_fin(LocalDateTime fecha_fin) {
-        this.fecha_fin = fecha_fin;
+    public void setFechaFin(LocalDateTime fechaFin) {
+        this.fechaFin = fechaFin;
     }
 }

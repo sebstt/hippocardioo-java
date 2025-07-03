@@ -24,5 +24,21 @@ public class FormularioEts {
     @Column(name = "tipo_ets")
     private String tipoEts;
 
-    // Getters y setters aquí
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+
+    public Integer getEdad() { return edad; }
+    public void setEdad(Integer edad) { this.edad = edad; }
+
+    public String getCorreo() { return correo; }
+    public void setCorreo(String correo) { this.correo = correo; }
+
+    public String gettipoEts() { return tipoEts; }
+    public void setTipoEts(String tipoEts) { this.tipoEts = tipoEts; }
 }
+
+

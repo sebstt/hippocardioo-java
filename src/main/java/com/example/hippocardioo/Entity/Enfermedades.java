@@ -34,7 +34,6 @@ public class Enfermedades {
     @Column(name = "sintomas_enfermedades", nullable = false, length = 100)
     private String sintomas_enfermedades;
 
-    // Getters y Setters
 
     public Long getId_enfermedades() {
         return id_enfermedades;

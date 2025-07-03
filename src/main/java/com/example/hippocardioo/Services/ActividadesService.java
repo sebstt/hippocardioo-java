@@ -1,13 +1,13 @@
 package com.example.hippocardioo.Services;
 
-import java.util.List;
+import com.example.hippocardioo.Entity.Actividades;
+import com.example.hippocardioo.Repository.ActividadesRepository;
+import com.example.hippocardioo.Services.DAO.idao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.hippocardioo.Entity.Actividades;
-import com.example.hippocardioo.Repository.ActividadesRepository;
-import com.example.hippocardioo.Services.DAO.idao;
+import java.util.List;
 
 @Service
 public class ActividadesService implements idao<Actividades, Long> {
@@ -32,7 +32,7 @@ public class ActividadesService implements idao<Actividades, Long> {
 
     @Override
     public Actividades update(Actividades entity) {
-        Long id = entity.getId_actividades();
+        Long id = entity.getId();
         if (id == null || !actividadesRepository.existsById(id)) {
             return null;
         }

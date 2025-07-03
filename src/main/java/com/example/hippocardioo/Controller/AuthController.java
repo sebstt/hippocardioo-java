@@ -20,7 +20,7 @@ public class AuthController {
 
         if (password.equals(storedPassword)) {
             // Redirige a la zona segura
-            return "redirect:/dashboard";
+            return "redirect:/perfil";
         } else {
             model.addAttribute("error", "Contraseña incorrecta.");
             return "auth/confirm-password";

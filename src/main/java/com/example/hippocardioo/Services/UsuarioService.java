@@ -32,11 +32,11 @@ public class UsuarioService implements idao<Usuario, Long> {
 
     @Override
     public Usuario update(Usuario entity) {
-        Long id = entity.getId_usuario();
-        if (id != null && usuarioRepository.existsById(id)) {
-            return usuarioRepository.save(entity);
+        Long id = entity.getId();
+        if (id == null || !usuarioRepository.existsById(id)) {
+            return null;
         }
-        return null;
+        return usuarioRepository.save(entity);
     }
 
     @Override

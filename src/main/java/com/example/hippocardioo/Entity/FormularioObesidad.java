@@ -24,7 +24,6 @@ public class FormularioObesidad {
     @DecimalMin(value = "0.0", inclusive = false, message = "El IMC debe ser positivo")
     private Double imc;
 
-    // Getters y Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

@@ -39,7 +39,7 @@ public class ActividadesController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Actividades> update(@PathVariable Long id, @RequestBody Actividades actividad) {
-        actividad.setId_actividades(id); // Asegurar que se usa el ID de la URL
+        actividad.setId(id); // ← corregido
         Actividades actualizada = actividadesService.update(actividad);
         if (actualizada != null) {
             return ResponseEntity.ok(actualizada);
