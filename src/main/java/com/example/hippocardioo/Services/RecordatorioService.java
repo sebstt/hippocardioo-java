@@ -32,7 +32,7 @@ public class RecordatorioService implements idao<Recordatorio, Long> {
 
     @Override
     public Recordatorio update(Recordatorio entity) {
-        Long id = entity.getId_recordatorio();
+        Long id = entity.getIdRecordatorio();
         if (id != null && recordatorioRepository.existsById(id)) {
             return recordatorioRepository.save(entity);
         }

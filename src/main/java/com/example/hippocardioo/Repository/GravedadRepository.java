@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface GravedadRepository extends JpaRepository<Gravedad, Long> {
-    List<Gravedad> findByNivelIgnoreCase(String nivel);
+    List<Gravedad> findByDescripcionIgnoreCase(String descripcion);
     List<Gravedad> findByNombreGravedadIgnoreCase(String nombre);
 }

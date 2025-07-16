@@ -14,80 +14,80 @@ public class Enfermedades {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_enfermedades", nullable = false)
-    private Long id_enfermedades;
+    private Long idEnfermedades;
 
     @Column(name = "nombre_enfermedades", nullable = false, length = 100)
-    private String nombre_enfermedades;
+    private String nombreEnfermedades;
 
     @Column(name = "descripcion_enfermedades", nullable = false, length = 100)
-    private String descripcion_enfermedades;
+    private String descripcionEnfermedades;
 
     @Column(name = "causas_enfermedades", nullable = false, length = 100)
-    private String causas_enfermedades;
+    private String causasEnfermedades;
 
     @Column(name = "cuidados_enfermedades", nullable = false, length = 100)
-    private String cuidados_enfermedades;
+    private String cuidadosEnfermedades;
 
     @Column(name = "tipos_enfermedades", nullable = false, length = 100)
-    private String tipos_enfermedades;
+    private String tiposEnfermedades;
 
     @Column(name = "sintomas_enfermedades", nullable = false, length = 100)
-    private String sintomas_enfermedades;
+    private String sintomasEnfermedades;
 
-
-    public Long getId_enfermedades() {
-        return id_enfermedades;
+    // Getters y Setters
+    public Long getIdEnfermedades() {
+        return idEnfermedades;
     }
 
-    public void setId_enfermedades(Long id_enfermedades) {
-        this.id_enfermedades = id_enfermedades;
+    public void setIdEnfermedades(Long idEnfermedades) {
+        this.idEnfermedades = idEnfermedades;
     }
 
-    public String getNombre_enfermedades() {
-        return nombre_enfermedades;
+    public String getNombreEnfermedades() {
+        return nombreEnfermedades;
     }
 
-    public void setNombre_enfermedades(String nombre_enfermedades) {
-        this.nombre_enfermedades = nombre_enfermedades;
+    public void setNombreEnfermedades(String nombre_enfermedad) {
+        this.nombreEnfermedades = nombre_enfermedad;
     }
 
-    public String getDescripcion_enfermedades() {
-        return descripcion_enfermedades;
+    public String getDescripcionEnfermedades() {
+        return descripcionEnfermedades;
     }
 
-    public void setDescripcion_enfermedades(String descripcion_enfermedades) {
-        this.descripcion_enfermedades = descripcion_enfermedades;
+    public void setDescripcionEnfermedades(String descripcionEnfermedades) {
+        this.descripcionEnfermedades = descripcionEnfermedades;
     }
 
-    public String getCausas_enfermedades() {
-        return causas_enfermedades;
+    public String getCausasEnfermedades() {
+        return causasEnfermedades;
     }
 
-    public void setCausas_enfermedades(String causas_enfermedades) {
-        this.causas_enfermedades = causas_enfermedades;
+    public void setCausasEnfermedades(String causasEnfermedades) {
+        this.causasEnfermedades = causasEnfermedades;
     }
 
-    public String getCuidados_enfermedades() {
-        return cuidados_enfermedades;
+    public String getCuidadosEnfermedades() {
+        return cuidadosEnfermedades;
     }
 
-    public void setCuidados_enfermedades(String cuidados_enfermedades) {
-        this.cuidados_enfermedades = cuidados_enfermedades;
+    public void setCuidadosEnfermedades(String cuidadosEnfermedades) {
+        this.cuidadosEnfermedades = cuidadosEnfermedades;
     }
 
-    public String getTipos_enfermedades() {
-        return tipos_enfermedades;
+    public String getTiposEnfermedades() {
+        return tiposEnfermedades;
     }
 
-    public void setTipos_enfermedades(String tipos_enfermedades) {
-        this.tipos_enfermedades = tipos_enfermedades;
+    public void setTiposEnfermedades(String tiposEnfermedades) {
+        this.tiposEnfermedades = tiposEnfermedades;
     }
 
-    public String getSintomas_enfermedades() {
-        return sintomas_enfermedades;
+    public String getSintomasEnfermedades() {
+        return sintomasEnfermedades;
     }
 
-    public void setSintomas_enfermedades(String sintomas_enfermedades) {
-        this.sintomas_enfermedades = sintomas_enfermedades;
+    public void setSintomasEnfermedades(String sintomasEnfermedades) {
+        this.sintomasEnfermedades = sintomasEnfermedades;
     }
 }

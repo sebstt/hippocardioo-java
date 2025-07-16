@@ -1,7 +1,6 @@
 package com.example.hippocardioo.Entity;
 
 import java.time.LocalDateTime;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -11,40 +10,41 @@ public class Recordatorio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_recordatorio", nullable = false)
-    private Long id_recordatorio;
+    private Long idRecordatorio;
 
     @Column(name = "nombre_recordatorio", nullable = false, length = 100)
-    private String nombre_recordatorio;
+    private String nombreRecordatorio;
 
     @Column(name = "tipo_recordatorio", nullable = false, length = 100)
-    private String tipo_recordatorio;
+    private String tipoRecordatorio;
 
     @Column(name = "fecha")
     private LocalDateTime fecha;
 
+    // Getters y setters
 
-    public Long getId_recordatorio() {
-        return id_recordatorio;
+    public Long getIdRecordatorio() {
+        return idRecordatorio;
     }
 
-    public void setId_recordatorio(Long id_recordatorio) {
-        this.id_recordatorio = id_recordatorio;
+    public void setIdRecordatorio(Long idRecordatorio) {
+        this.idRecordatorio = idRecordatorio;
     }
 
-    public String getNombre_recordatorio() {
-        return nombre_recordatorio;
+    public String getNombreRecordatorio() {
+        return nombreRecordatorio;
     }
 
-    public void setNombre_recordatorio(String nombre_recordatorio) {
-        this.nombre_recordatorio = nombre_recordatorio;
+    public void setNombreRecordatorio(String nombreRecordatorio) {
+        this.nombreRecordatorio = nombreRecordatorio;
     }
 
-    public String getTipo_recordatorio() {
-        return tipo_recordatorio;
+    public String getTipoRecordatorio() {
+        return tipoRecordatorio;
     }
 
-    public void setTipo_recordatorio(String tipo_recordatorio) {
-        this.tipo_recordatorio = tipo_recordatorio;
+    public void setTipoRecordatorio(String tipoRecordatorio) {
+        this.tipoRecordatorio = tipoRecordatorio;
     }
 
     public LocalDateTime getFecha() {

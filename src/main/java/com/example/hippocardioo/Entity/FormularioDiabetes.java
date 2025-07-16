@@ -19,21 +19,46 @@ public class FormularioDiabetes {
     @Column(name = "tipo_diabetes")
     private String tipoDiabetes;
 
+    // El getter para 'tipoDiabetes' debe ser 'getTipoDiabetes()'
+    public Long getId() {
+        return id;
+    }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public Integer getEdad() { return edad; }
-    public void setEdad(Integer edad) { this.edad = edad; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public String getCorreo() { return correo; }
-    public void setCorreo(String correo) { this.correo = correo; }
+    public Integer getEdad() {
+        return edad;
+    }
 
-    public String gettipoDiabetes() { return tipoDiabetes; }
-    public void setTipoDiabetes(String tipoDiabetes) { this.tipoDiabetes = tipoDiabetes; }
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    // Método getter corregido
+    public String getTipoDiabetes() {
+        return tipoDiabetes;
+    }
+
+    // Setter correcto
+    public void setTipoDiabetes(String tipoDiabetes) {
+        this.tipoDiabetes = tipoDiabetes;
+    }
 }
-

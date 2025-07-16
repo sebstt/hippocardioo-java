@@ -9,8 +9,8 @@ import java.util.List;
 @Repository
 public interface RecordatorioRepository extends JpaRepository<Recordatorio, Long> {
 
-    List<Recordatorio> findByTituloContainingIgnoreCase(String titulo);
-    List<Recordatorio> findByTipoRecordatorioIgnoreCase(String tipo);
     List<Recordatorio> findByNombreRecordatorioContainingIgnoreCase(String nombre);
+
+    List<Recordatorio> findByTipoRecordatorioIgnoreCase(String tipo);
 
 }

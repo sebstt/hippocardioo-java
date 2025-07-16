@@ -1,7 +1,6 @@
 package com.example.hippocardioo.Entity;
 
 import java.time.LocalDateTime;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -11,51 +10,50 @@ public class Metas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_metas", nullable = false)
-    private Long id_metas;
+    private Long idMetas;
 
     @Column(name = "nombre_metas", nullable = false, length = 100)
-    private String nombre_metas;
+    private String nombreMetas;
 
     @Column(name = "descripcion_metas", nullable = false, length = 100)
-    private String descripcion_metas;
+    private String descripcionMetas;
 
     @Column(name = "tipo_metas", nullable = false, length = 100)
-    private String tipo_metas;
+    private String tipoMetas;
 
     @Column(name = "fecha")
     private LocalDateTime fecha;
 
-
-    public Long getId_metas() {
-        return id_metas;
+    public Long getIdMetas() {
+        return idMetas;
     }
 
-    public void setId_metas(Long id_metas) {
-        this.id_metas = id_metas;
+    public void setIdMetas(Long idMetas) {
+        this.idMetas = idMetas;
     }
 
-    public String getNombre_metas() {
-        return nombre_metas;
+    public String getNombreMetas() {
+        return nombreMetas;
     }
 
-    public void setNombre_metas(String nombre_metas) {
-        this.nombre_metas = nombre_metas;
+    public void setNombreMetas(String nombreMetas) {
+        this.nombreMetas = nombreMetas;
     }
 
-    public String getDescripcion_metas() {
-        return descripcion_metas;
+    public String getDescripcionMetas() {
+        return descripcionMetas;
     }
 
-    public void setDescripcion_metas(String descripcion_metas) {
-        this.descripcion_metas = descripcion_metas;
+    public void setDescripcionMetas(String descripcionMetas) {
+        this.descripcionMetas = descripcionMetas;
     }
 
-    public String getTipo_metas() {
-        return tipo_metas;
+    public String getTipoMetas() {
+        return tipoMetas;
     }
 
-    public void setTipo_metas(String tipo_metas) {
-        this.tipo_metas = tipo_metas;
+    public void setTipoMetas(String tipoMetas) {
+        this.tipoMetas = tipoMetas;
     }
 
     public LocalDateTime getFecha() {

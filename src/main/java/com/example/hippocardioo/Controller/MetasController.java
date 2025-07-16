@@ -34,7 +34,7 @@ public class MetasController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Metas> update(@PathVariable Long id, @RequestBody Metas meta) {
-        meta.setId_metas(id);  // Ajuste aquí según el nombre del campo en la entidad
+        meta.setIdMetas(id);  // Ajuste aquí según el nombre del campo en la entidad
         Metas updated = metasService.update(meta);
         return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }

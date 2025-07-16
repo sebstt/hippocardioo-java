@@ -1,38 +1,50 @@
 package com.example.hippocardioo.Controller;
 
-import com.example.hippocardioo.Entity.FormularioEts; // crea esta entidad según los campos del formulario
-
-import jakarta.validation.Valid;
-
+import com.example.hippocardioo.Entity.FormularioEts;
+import com.example.hippocardioo.Services.FormularioEtsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/formulario")
+@RequestMapping("/ets")
 public class FormularioEtsController {
 
-    @GetMapping("/ets")
+    @Autowired
+    private FormularioEtsService service;
+
+    @GetMapping("/nuevo")
     public String mostrarFormulario(Model model) {
-        model.addAttribute("etsForm", new FormularioEts());
-        return "ets";  // nombre del archivo HTML sin extensión, en templates/ets.html
+        model.addAttribute("formulario", new FormularioEts());
+        return "formulario-ets";
     }
 
-    @PostMapping("/ets")
-    public String procesarFormulario(
-            @ModelAttribute("etsForm") @Valid FormularioEts formularioEts,
-            BindingResult bindingResult,
-            Model model) {
+    @PostMapping("/guardar")
+    public String guardarFormulario(@ModelAttribute("formulario") FormularioEts formulario) {
+        service.guardar(formulario);
+        return "redirect:/ets/lista";
+    }
 
-        if (bindingResult.hasErrors()) {
-            return "ets"; // si hay errores, vuelve a mostrar el formulario
+    @GetMapping("/lista")
+    public String listar(Model model) {
+        model.addAttribute("formularios", service.obtenerTodos());
+        return "lista-ets";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable Long id, Model model) {
+        var formulario = service.obtenerPorId(id);
+        if (formulario.isPresent()) {
+            model.addAttribute("formulario", formulario.get());
+            return "formulario-ets";
         }
+        return "redirect:/ets/lista";
+    }
 
-        // Aquí puedes guardar formularioEts en base de datos o hacer otras operaciones
-
-        model.addAttribute("success", "Formulario enviado correctamente");
-        model.addAttribute("etsForm", new FormularioEts()); // limpiar formulario
-        return "ets";
+    @GetMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable Long id) {
+        service.eliminar(id);
+        return "redirect:/ets/lista";
     }
 }

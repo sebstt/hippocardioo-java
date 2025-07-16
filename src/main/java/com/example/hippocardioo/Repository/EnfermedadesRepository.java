@@ -8,9 +8,7 @@ import java.util.List;
 
 @Repository
 public interface EnfermedadesRepository extends JpaRepository<Enfermedades, Long> {
-
-    List<Enfermedades> findByTipoIgnoreCase(String tipo);
-    List<Enfermedades> findByNombreContainingIgnoreCase(String nombre);
+;
     List<Enfermedades> findByTiposEnfermedadesIgnoreCase(String tipo);
     List<Enfermedades> findByNombreEnfermedadesContainingIgnoreCase(String nombre);
 }

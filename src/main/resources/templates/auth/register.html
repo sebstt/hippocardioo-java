@@ -1,27 +1,98 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - Hippocardio</title>
-    <link rel="stylesheet" href="/css/estilos.css">
+
+    <style>
+        /* Estilos para el encabezado */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #D32F2F;
+        }
+
+        /* Cuadro de registro */
+        .cuadro-registro {
+            max-width: 500px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cuadro-registro h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        .cuadro-registro input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .cuadro-registro button {
+            width: 100%;
+            padding: 10px;
+            background-color: #D32F2F;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .cuadro-registro button:hover {
+            background-color: #C2185B;
+        }
+
+        .cuadro-registro p {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .cuadro-registro a {
+            color: #D32F2F;
+            text-decoration: none;
+        }
+
+        .cuadro-registro a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <main>
-        <h1>Hippocardio - Registro</h1>
-        <div class="cuadro-registro">
-            <h4>Registrarse</h4>
-            <form action="/register" method="POST">
-                <input type="text" id="name" name="name" required placeholder="Nombre" value="">
-                <input type="text" id="lastname" name="lastname" required placeholder="Apellido" value="">
-                <input type="email" id="email" name="email" required placeholder="Correo electrónico" value="">
-                <input type="password" id="password" name="password" required placeholder="Contraseña">
-                <input type="password" id="password_confirmation" name="password_confirmation" required placeholder="Confirmar contraseña">
+<main>
+    <h1>Hippocardio - Registro</h1>
+    <div class="cuadro-registro">
+        <h4>Registrarse</h4>
+        <form th:action="@{/register}" method="POST" th:object="${usuario}">
+            <input type="text" id="name" name="name" th:field="*{nombre}" required placeholder="Nombre">
+            <input type="text" id="lastname" name="lastname" th:field="*{apellido}" required placeholder="Apellido">
+            <input type="email" id="email" name="email" th:field="*{correo}" required placeholder="Correo electrónico">
+            <input type="password" id="password" name="password" th:field="*{password}" required placeholder="Contraseña">
+            <input type="password" id="password_confirmation" name="password_confirmation" required placeholder="Confirmar contraseña">
 
-                <button type="submit">Crear cuenta</button>
-            </form>
-            <p>¿Ya tienes una cuenta? <a href="/login">Iniciar sesión</a></p>
-        </div>
-    </main>
+            <button type="submit">Crear cuenta</button>
+        </form>
+        <p>¿Ya tienes una cuenta? <a th:href="@{/login}">Iniciar sesión</a></p>
+    </div>
+</main>
 </body>
 </html>

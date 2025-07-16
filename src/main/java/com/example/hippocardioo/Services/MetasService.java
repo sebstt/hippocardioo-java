@@ -32,7 +32,7 @@ public class MetasService implements idao<Metas, Long> {
 
     @Override
     public Metas update(Metas entity) {
-        Long id = entity.getId_metas();
+        Long id = entity.getIdMetas();
         if (id != null && metasRepository.existsById(id)) {
             return metasRepository.save(entity);
         }

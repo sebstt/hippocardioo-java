@@ -9,7 +9,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.5.0</version>
-        <relativePath/>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.example</groupId>
@@ -19,7 +19,7 @@
     <description>Proyecto Spring Boot para Hippocardio</description>
 
     <properties>
-        <java.version>24</java.version>
+        <java.version>24</java.version> <!-- Si realmente estás usando Java 24 -->
     </properties>
 
     <dependencies>
@@ -48,11 +48,18 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Validación -->
+        <!-- Validación API -->
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
             <version>3.0.2</version>
+        </dependency>
+
+        <!-- Implementación Hibernate Validator -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.1.Final</version>
         </dependency>
 
         <!-- Lombok -->
@@ -83,22 +90,24 @@
     <build>
         <plugins>
 
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <release>24</release>
+                    <release>24</release> <!-- Si estás usando Java 24 -->
                     <compilerArgs>
                         <arg>--enable-preview</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>
 
-            <!-- Plugin Spring Boot con argumentos para preview -->
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.5.0</version> <!-- Alineado con la versión de Spring Boot -->
                 <configuration>
                     <jvmArguments>--enable-preview</jvmArguments>
                 </configuration>

@@ -11,18 +11,20 @@ public class FormularioObesidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "El nombre es obligatorio")
+    @NotEmpty(message = "El nombre es obligatorio")
     private String nombre;
 
-    @Min(value = 0, message = "La edad debe ser positiva")
+    @NotNull(message = "La edad es obligatoria")
     private Integer edad;
 
-    @Email(message = "Correo inválido")
+    @Email(message = "Correo electrónico inválido")
     private String correo;
 
-    @NotNull(message = "El IMC es obligatorio")
-    @DecimalMin(value = "0.0", inclusive = false, message = "El IMC debe ser positivo")
-    private Double imc;
+    @NotEmpty(message = "El IMC es obligatorio")
+    @Pattern(regexp = "^[0-9]+(\\.[0-9]{1,2})?$", message = "IMC debe ser un número válido (Ej: 28.5)")
+    private String imc;
+
+    // Getters y Setters
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -36,6 +38,6 @@ public class FormularioObesidad {
     public String getCorreo() { return correo; }
     public void setCorreo(String correo) { this.correo = correo; }
 
-    public Double getImc() { return imc; }
-    public void setImc(Double imc) { this.imc = imc; }
+    public String getImc() { return imc; }
+    public void setImc(String imc) { this.imc = imc; }
 }

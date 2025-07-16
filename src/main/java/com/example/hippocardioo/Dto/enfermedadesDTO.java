@@ -7,16 +7,16 @@ public class enfermedadesDTO {
     private String descripcion_enfermedades;
     private String causas_enfermedades;
     private String cuidados_enfermedades;
-    private String tipos_enfermedades;
+    private String tiposEnfermedades;
     private String sintomas_enfermedades;
 
-    public enfermedadesDTO(Long id_enfermedades, String nombre_enfermedades, String descripcion_enfermedades, String causas_enfermedades, String cuidados_enfermedades, String tipos_enfermedades, String sintomas_enfermedades) {
+    public enfermedadesDTO(Long id_enfermedades, String nombre_enfermedades, String descripcion_enfermedades, String causas_enfermedades, String cuidados_enfermedades, String tiposEnfermedades, String sintomas_enfermedades) {
         this.id_enfermedades = id_enfermedades;
         this.nombre_enfermedades = nombre_enfermedades;
         this.descripcion_enfermedades = descripcion_enfermedades;
         this.causas_enfermedades = causas_enfermedades;
         this.cuidados_enfermedades = cuidados_enfermedades;
-        this.tipos_enfermedades = tipos_enfermedades;
+        this.tiposEnfermedades = tiposEnfermedades;
         this.sintomas_enfermedades = sintomas_enfermedades;
     }
 
@@ -61,11 +61,11 @@ public class enfermedadesDTO {
     }
 
     public String getTipos_enfermedades() {
-        return tipos_enfermedades;
+        return tiposEnfermedades;
     }
 
-    public void setTipos_enfermedades(String tipos_enfermedades) {
-        this.tipos_enfermedades = tipos_enfermedades;
+    public void setTipos_enfermedades(String tiposEnfermedades) {
+        this.tiposEnfermedades = tiposEnfermedades;
     }
 
     public String getSintomas_enfermedades() {

@@ -3,46 +3,55 @@ package com.example.hippocardioo.Services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Service;
 
 import com.example.hippocardioo.Entity.Usuario;
 import com.example.hippocardioo.Repository.UsuarioRepository;
-import com.example.hippocardioo.Services.DAO.idao;
 
 @Service
-public class UsuarioService implements idao<Usuario, Long> {
+public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Override
-    public List<Usuario> getAll() {
-        return usuarioRepository.findAll();
+    public void guardarUsuario(Usuario usuario) {
+        // Aquí deberías encriptar la contraseña con BCrypt
+        usuario.setPassword(usuario.getPassword()); // simplificado
+        usuarioRepository.save(usuario);
     }
 
-    @Override
-    public Usuario getById(Long id) {
-        return usuarioRepository.findById(id).orElse(null);
+    public boolean emailExiste(String email) {
+        return usuarioRepository.findByCorreo(email).isPresent();
     }
 
-    @Override
-    public Usuario create(Usuario entity) {
-        return usuarioRepository.save(entity);
-    }
-
-    @Override
-    public Usuario update(Usuario entity) {
-        Long id = entity.getId();
-        if (id == null || !usuarioRepository.existsById(id)) {
-            return null;
-        }
-        return usuarioRepository.save(entity);
-    }
-
-    @Override
     public void delete(Long id) {
-        if (usuarioRepository.existsById(id)) {
-            usuarioRepository.deleteById(id);
-        }
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    }
+
+    public Usuario getById(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+    }
+
+    public Usuario update(Usuario usuario) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
+
+    public Usuario create(Usuario usuario) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'create'");
+    }
+
+    public List<Usuario> getAll() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAll'");
+    }
+
+    public User findByUsername(String name) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByUsername'");
     }
 }

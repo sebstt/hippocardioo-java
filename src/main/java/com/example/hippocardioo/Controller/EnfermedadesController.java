@@ -34,7 +34,7 @@ public class EnfermedadesController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Enfermedades> update(@PathVariable Long id, @RequestBody Enfermedades enfermedad) {
-        enfermedad.setId_enfermedades(id);
+        enfermedad.setIdEnfermedades(id);  // <-- Corrección aquí
         Enfermedades updated = enfermedadesService.update(enfermedad);
         return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }

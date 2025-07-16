@@ -9,47 +9,51 @@ public class Habitos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_habitos", nullable = false)
-    private Long id_habitos;
+    private Long idHabitos;
 
     @Column(name = "nombre_habitos", nullable = false, length = 100)
-    private String nombre_habitos;
+    private String nombreHabitos;
 
     @Column(name = "descripcion_habitos", nullable = false, length = 100)
-    private String descripcion_habitos;
+    private String descripcionHabitos;
 
     @Column(name = "tipo_habitos", nullable = false, length = 100)
-    private String tipo_habitos;
+    private String tipoHabitos;
 
-
-    public Long getId_habitos() {
-        return id_habitos;
+    public Long getIdHabitos() {
+        return idHabitos;
     }
 
-    public void setId_habitos(Long id_habitos) {
-        this.id_habitos = id_habitos;
+    public void setIdHabitos(Long idHabitos) {
+        this.idHabitos = idHabitos;
     }
 
-    public String getNombre_habitos() {
-        return nombre_habitos;
+    public String getNombreHabitos() {
+        return nombreHabitos;
     }
 
-    public void setNombre_habitos(String nombre_habitos) {
-        this.nombre_habitos = nombre_habitos;
+    public void setNombreHabitos(String nombreHabitos) {
+        this.nombreHabitos = nombreHabitos;
     }
 
-    public String getDescripcion_habitos() {
-        return descripcion_habitos;
+    public String getDescripcionHabitos() {
+        return descripcionHabitos;
     }
 
-    public void setDescripcion_habitos(String descripcion_habitos) {
-        this.descripcion_habitos = descripcion_habitos;
+    public void setDescripcionHabitos(String descripcionHabitos) {
+        this.descripcionHabitos = descripcionHabitos;
     }
 
-    public String getTipo_habitos() {
-        return tipo_habitos;
+    public String getTipoHabitos() {
+        return tipoHabitos;
     }
 
-    public void setTipo_habitos(String tipo_habitos) {
-        this.tipo_habitos = tipo_habitos;
+    public void setTipoHabitos(String tipoHabitos) {
+        this.tipoHabitos = tipoHabitos;
+    }
+
+    public void setDescripcion_habitos(String descripcionHabitos2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDescripcion_habitos'");
     }
 }

@@ -4,6 +4,7 @@ import com.example.hippocardioo.Entity.Habitos;
 import com.example.hippocardioo.Services.HabitosService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +18,12 @@ public class HabitosController {
     private HabitosService habitosService;
 
     @GetMapping
-    public List<Habitos> getAll() {
-        return habitosService.getAll();
+    public ResponseEntity<List<Habitos>> getAll() {
+        List<Habitos> list = habitosService.getAll();
+        if (list.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(list);
     }
 
     @GetMapping("/{id}")
@@ -29,12 +34,19 @@ public class HabitosController {
 
     @PostMapping
     public ResponseEntity<Habitos> create(@RequestBody Habitos habito) {
-        return ResponseEntity.ok(habitosService.create(habito));
+        if (habito == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        Habitos creado = habitosService.create(habito);
+        return ResponseEntity.status(HttpStatus.CREATED).body(creado);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Habitos> update(@PathVariable Long id, @RequestBody Habitos habito) {
-        habito.setId_habitos(id);  // Usa el nombre correcto del setter según la entidad
+        if (habito == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        habito.setIdHabitos(id);
         Habitos updated = habitosService.update(habito);
         return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
@@ -45,20 +57,25 @@ public class HabitosController {
         if (habito != null) {
             habitosService.delete(id);
             return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.notFound().build();
     }
 
-    // 🔍 Filtros personalizados
-
     @GetMapping("/buscar/tipo")
-    public List<Habitos> buscarPorTipo(@RequestParam String tipo) {
-        return habitosService.buscarPorTipo(tipo);
+    public ResponseEntity<List<Habitos>> buscarPorTipo(@RequestParam String tipo) {
+        List<Habitos> list = habitosService.buscarPorTipo(tipo);
+        if (list.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(list);
     }
 
     @GetMapping("/buscar/nombre")
-    public List<Habitos> buscarPorNombre(@RequestParam String nombre) {
-        return habitosService.buscarPorNombre(nombre);
+    public ResponseEntity<List<Habitos>> buscarPorNombre(@RequestParam String nombre) {
+        List<Habitos> list = habitosService.buscarPorNombre(nombre);
+        if (list.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(list);
     }
 }

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Formularios de Diabetes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FAFAFA;
+            padding: 30px;
+        }
+
+        h2 {
+            color: #D32F2F;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #D32F2F;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .acciones a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #D32F2F;
+        }
+
+        .acciones a:hover {
+            text-decoration: underline;
+        }
+
+        .nuevo-btn {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #D32F2F;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .nuevo-btn:hover {
+            background-color: #B71C1C;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Lista de Formularios de Diabetes</h2>
+
+<a class="nuevo-btn" th:href="@{/formulario/nuevo}">Nuevo Formulario</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Correo</th>
+            <th>Tipo de Diabetes</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="f : ${formularios}">
+            <td th:text="${f.id}"></td>
+            <td th:text="${f.nombre}"></td>
+            <td th:text="${f.edad}"></td>
+            <td th:text="${f.correo}"></td>
+            <td th:text="${f.tipoDiabetes}"></td>
+            <td class="acciones">
+                <a th:href="@{'/formulario/editar/' + ${f.id}}">Editar</a>
+                <a th:href="@{'/formulario/eliminar/' + ${f.id}}" onclick="return confirm('¿Seguro que deseas eliminar este formulario?')">Eliminar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+

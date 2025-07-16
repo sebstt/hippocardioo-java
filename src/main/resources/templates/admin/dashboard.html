@@ -3,91 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <title>Admin Dashboard</title>
+
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilos para los filtros */
+        .filtro-form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .filtro-form fieldset {
+            border: none;
+        }
+
+        .filtro-form legend {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #343a40;
+        }
+
+        .filtro-form label {
+            font-size: 1rem;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .filtro-form input,
+        .filtro-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .filtro-form input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .filtro-form .button-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filtro-form button,
+        .filtro-form .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .filtro-form button:hover,
+        .filtro-form .button:hover {
+            background-color: #0056b3;
+        }
+
+        .filtro-form .button {
+            background-color: #6c757d;
+        }
+
+        .filtro-form .button:hover {
+            background-color: #5a6268;
+        }
+
+        /* Estilos de las secciones de resultados */
+        section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #343a40;
+        }
+
+        section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        section ul li {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        section ul li strong {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        section ul li span {
+            color: #555;
+        }
+
+        /* Estilos para los enlaces */
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilos de botones de acción */
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .action-buttons button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .action-buttons button:hover {
+            background-color: #218838;
+        }
+    </style>
+
 </head>
 <body>
 <div class="container">
     <header>
         <h2>Admin Dashboard</h2>
+        <!-- Enlace a logout o inicio -->
+        <nav>
+            <a href="/">Cerrar sesión</a> 
+            <a href="/">Inicio</a>
+        </nav>
     </header>
 
-    <form method="GET" th:action="@{/admin/dashboard}">
-        <!-- Filtro por nombre -->
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" id="nombre" th:value="${nombre}">
+    <!-- Formulario para agregar un nuevo formulario de salud -->
+    <form method="POST" action="/admin/agregar" class="filtro-form">
+        <fieldset>
+            <legend>Agregar Información</legend>
 
-        <!-- Filtro por edad -->
-        <label for="edad">Edad:</label>
-        <input type="number" name="edad" id="edad" th:value="${edad}">
+            <!-- Filtro por nombre -->
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" required>
 
-        <!-- Filtro por tipo de diabetes -->
-        <label for="tipo_diabetes">Tipo de Diabetes:</label>
-        <select name="tipo_diabetes" id="tipo_diabetes">
-            <option value="">Selecciona un tipo</option>
-            <option value="Tipo 1" th:selected="${tipo_diabetes == 'Tipo 1'}">Tipo 1</option>
-            <option value="Tipo 2" th:selected="${tipo_diabetes == 'Tipo 2'}">Tipo 2</option>
-            <option value="Gestacional" th:selected="${tipo_diabetes == 'Gestacional'}">Gestacional</option>
-        </select>
+            <!-- Filtro por edad -->
+            <label for="edad">Edad:</label>
+            <input type="number" name="edad" id="edad" min="0" required>
 
-        <!-- Filtro por tipo de ETS -->
-        <label for="tipo_ets">Tipo de ETS:</label>
-        <select name="tipo_ets" id="tipo_ets">
-            <option value="">Selecciona un tipo</option>
-            <option value="VIH" th:selected="${tipo_ets == 'VIH'}">VIH</option>
-            <option value="Sífilis" th:selected="${tipo_ets == 'Sífilis'}">Sífilis</option>
-            <option value="Gonorrea" th:selected="${tipo_ets == 'Gonorrea'}">Gonorrea</option>
-            <option value="Otro" th:selected="${tipo_ets == 'Otro'}">Otro</option>
-        </select>
+            <!-- Filtro por tipo de diabetes -->
+            <label for="tipo_diabetes">Tipo de Diabetes:</label>
+            <select name="tipo_diabetes" id="tipo_diabetes" required>
+                <option value="">Selecciona un tipo</option>
+                <option value="Tipo 1">Tipo 1</option>
+                <option value="Tipo 2">Tipo 2</option>
+                <option value="Gestacional">Gestacional</option>
+            </select>
 
-        <!-- Filtro por presión arterial -->
-        <label for="presion_arterial">Presión Arterial:</label>
-        <input type="text" name="presion_arterial" id="presion_arterial" th:value="${presion_arterial}">
+            <!-- Filtro por tipo de ETS -->
+            <label for="tipo_ets">Tipo de ETS:</label>
+            <select name="tipo_ets" id="tipo_ets" required>
+                <option value="">Selecciona un tipo</option>
+                <option value="VIH">VIH</option>
+                <option value="Sífilis">Sífilis</option>
+                <option value="Gonorrea">Gonorrea</option>
+                <option value="Otro">Otro</option>
+            </select>
 
-        <!-- Filtro por peso -->
-        <label for="peso">Peso (kg):</label>
-        <input type="number" name="peso" id="peso" th:value="${peso}">
+            <!-- Filtro por presión arterial -->
+            <label for="presion_arterial">Presión Arterial:</label>
+            <input type="text" name="presion_arterial" id="presion_arterial" pattern="\d{2,3}/\d{2,3}" title="Formato esperado: 120/80" required>
 
-        <!-- Filtro por altura -->
-        <label for="altura">Altura (cm):</label>
-        <input type="number" name="altura" id="altura" th:value="${altura}">
+            <!-- Filtro por peso -->
+            <label for="peso">Peso (kg):</label>
+            <input type="number" name="peso" id="peso" min="0" step="0.1" required>
 
-        <button type="submit">Filtrar</button>
+            <!-- Filtro por altura -->
+            <label for="altura">Altura (cm):</label>
+            <input type="number" name="altura" id="altura" min="0" step="1" required>
+
+            <!-- Botones -->
+            <div class="button-group">
+                <button type="submit">Agregar Información</button>
+                <a href="#" class="button">Limpiar</a>
+            </div>
+        </fieldset>
     </form>
 
-    <!-- Resultados -->
-    <h3>Formularios de Diabetes:</h3>
-    <ul>
-        <li th:each="formulario : ${formulariosDiabetes}">
-            <span th:text="${formulario.nombre}"></span> - <span th:text="${formulario.tipoDiabetes}"></span>
-        </li>
-    </ul>
+    <!-- Sección donde se muestran los formularios ingresados -->
+    <section>
+        <h3>Formularios de Diabetes:</h3>
+        <ul>
+            <li><strong>Juan Pérez</strong> - Tipo 1</li>
+            <li><strong>Laura Gómez</strong> - Tipo 2</li>
+        </ul>
+    </section>
 
-    <h3>Formularios de ETS:</h3>
-    <ul>
-        <li th:each="formulario : ${formulariosEts}">
-            <span th:text="${formulario.nombre}"></span> - <span th:text="${formulario.tipoEts}"></span>
-        </li>
-    </ul>
+    <section>
+        <h3>Formularios de ETS:</h3>
+        <ul>
+            <li><strong>Pedro López</strong> - VIH</li>
+            <li><strong>Ana Sánchez</strong> - Sífilis</li>
+        </ul>
+    </section>
 
-    <h3>Formularios de Hipertensión:</h3>
-    <ul>
-        <li th:each="formulario : ${formulariosHipertension}">
-            <span th:text="${formulario.nombre}"></span> - 
-            <span th:text="${formulario.presionArterial}"></span> /
-            <span th:text="${formulario.peso}"></span> kg /
-            <span th:text="${formulario.altura}"></span> cm
-        </li>
-    </ul>
+    <section>
+        <h3>Formularios de Hipertensión:</h3>
+        <ul>
+            <li><strong>Carlos Martín</strong> - 130/90 mmHg</li>
+            <li><strong>Silvia Ruiz</strong> - 140/95 mmHg</li>
+        </ul>
+    </section>
 
-    <h3>Formularios de Obesidad:</h3>
-    <ul>
-        <li th:each="formulario : ${formulariosObesidad}">
-            <span th:text="${formulario.nombre}"></span> -
-            <span th:text="${formulario.peso}"></span> kg /
-            <span th:text="${formulario.altura}"></span> cm
-        </li>
-    </ul>
+    <section>
+        <h3>Formularios de Obesidad:</h3>
+        <ul>
+            <li><strong>Raúl Torres</strong> - 90 kg / 175 cm</li>
+            <li><strong>Elena Díaz</strong> - 95 kg / 160 cm</li>
+        </ul>
+    </section>
 </div>
 </body>
 </html>

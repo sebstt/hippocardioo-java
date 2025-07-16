@@ -34,7 +34,7 @@ public class RecordatorioController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Recordatorio> update(@PathVariable Long id, @RequestBody Recordatorio recordatorio) {
-        recordatorio.setId_recordatorio(id);  // Aquí el setter correcto según la entidad
+        recordatorio.setIdRecordatorio(id);  // Aquí el setter correcto según la entidad
         Recordatorio updated = recordatorioService.update(recordatorio);
         return (updated != null) ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }

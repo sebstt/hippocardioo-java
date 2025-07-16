@@ -24,7 +24,6 @@ public class FormularioEts {
     @Column(name = "tipo_ets")
     private String tipoEts;
 
-
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -37,8 +36,6 @@ public class FormularioEts {
     public String getCorreo() { return correo; }
     public void setCorreo(String correo) { this.correo = correo; }
 
-    public String gettipoEts() { return tipoEts; }
+    public String getTipoEts() { return tipoEts; }
     public void setTipoEts(String tipoEts) { this.tipoEts = tipoEts; }
 }
-
-

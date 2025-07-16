@@ -1,40 +1,51 @@
 package com.example.hippocardioo.Controller;
 
 import com.example.hippocardioo.Entity.FormularioDiabetes;
-import com.example.hippocardioo.Repository.FormularioDiabetesRepository;
-import jakarta.validation.Valid;
+import com.example.hippocardioo.Services.FormularioDiabetesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/formulario/diabetes")
+@RequestMapping("/formulario")
 public class FormularioDiabetesController {
 
     @Autowired
-    private FormularioDiabetesRepository formularioRepo;
+    private FormularioDiabetesService service;
 
-    @GetMapping
+    @GetMapping("/nuevo")
     public String mostrarFormulario(Model model) {
-        model.addAttribute("diabetesForm", new FormularioDiabetes());
-        return "formularios/diabetes";
+        model.addAttribute("formulario", new FormularioDiabetes());
+        return "formulario";
     }
 
-    @PostMapping
-    public String procesarFormulario(
-        @ModelAttribute("diabetesForm") @Valid FormularioDiabetes formulario,
-        BindingResult result,
-        Model model
-    ) {
-        if (result.hasErrors()) {
-            return "formularios/diabetes";
-        }
+    @PostMapping("/guardar")
+    public String guardarFormulario(@ModelAttribute("formulario") FormularioDiabetes formulario) {
+        service.guardar(formulario);
+        return "redirect:/formulario/lista";
+    }
 
-        formularioRepo.save(formulario);
-        model.addAttribute("success", "Formulario enviado correctamente.");
-        model.addAttribute("diabetesForm", new FormularioDiabetes()); // limpia el form
-        return "formularios/diabetes";
+    @GetMapping("/lista")
+    public String listar(Model model) {
+        model.addAttribute("formularios", service.obtenerTodos());
+        return "lista";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String editarFormulario(@PathVariable Long id, Model model) {
+        var opt = service.obtenerPorId(id);
+        if (opt.isPresent()) {
+            model.addAttribute("formulario", opt.get());
+            return "formulario-diabetes";
+        }
+        return "redirect:/formulario/lista";
+    }
+
+    @GetMapping("/eliminar/{id}")
+    public String eliminarFormulario(@PathVariable Long id) {
+        service.eliminar(id);
+        return "redirect:/formulario/lista";
     }
 }
+

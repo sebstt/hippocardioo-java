@@ -32,7 +32,7 @@ public class EnfermedadesService implements idao<Enfermedades, Long> {
 
     @Override
     public Enfermedades update(Enfermedades entity) {
-        Long id = entity.getId_enfermedades();
+        Long id = entity.getIdEnfermedades(); // ✅ CORREGIDO
         if (id != null && enfermedadesRepository.existsById(id)) {
             return enfermedadesRepository.save(entity);
         }

@@ -9,8 +9,11 @@ import java.util.List;
 @Repository
 public interface HabitosRepository extends JpaRepository<Habitos, Long> {
 
-    List<Habitos> findByTipoIgnoreCase(String tipo);
-    List<Habitos> findByNombreContainingIgnoreCase(String nombre);
+    // Busca por tipoHabitos ignorando mayúsculas/minúsculas
     List<Habitos> findByTipoHabitosIgnoreCase(String tipo);
+
+    // Busca por nombreHabitos que contenga el texto, ignorando mayúsculas/minúsculas
     List<Habitos> findByNombreHabitosContainingIgnoreCase(String nombre);
+
 }
+

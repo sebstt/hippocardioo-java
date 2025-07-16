@@ -1,38 +1,48 @@
 package com.example.hippocardioo.Controller;
 
 import com.example.hippocardioo.Entity.FormularioHipertension;
-
-import jakarta.validation.Valid;
-
+import com.example.hippocardioo.Services.FormularioHipertensionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/formulario")
+@RequestMapping("/hipertension")
 public class FormularioHipertensionController {
 
-    @GetMapping("/hipertension")
+    @Autowired
+    private FormularioHipertensionService service;
+
+    @GetMapping("/nuevo")
     public String mostrarFormulario(Model model) {
-        model.addAttribute("hipertensionForm", new FormularioHipertension());
-        return "hipertension";  // nombre del archivo HTML en templates/hipertension.html
+        model.addAttribute("formulario", new FormularioHipertension());
+        return "formulario-hipertension";
     }
 
-    @PostMapping("/hipertension")
-    public String procesarFormulario(
-            @ModelAttribute("hipertensionForm") @Valid FormularioHipertension formularioHipertension,
-            BindingResult bindingResult,
-            Model model) {
+    @PostMapping("/guardar")
+    public String guardarFormulario(@ModelAttribute("formulario") FormularioHipertension formulario) {
+        service.guardar(formulario);
+        return "redirect:/hipertension/lista";
+    }
 
-        if (bindingResult.hasErrors()) {
-            return "hipertension";
-        }
+    @GetMapping("/lista")
+    public String listar(Model model) {
+        model.addAttribute("formularios", service.obtenerTodos());
+        return "lista-hipertension";
+    }
 
-        // Aquí guardas formularioHipertension a la base de datos o lógica
+    @GetMapping("/editar/{id}")
+    public String editarFormulario(@PathVariable Long id, Model model) {
+        var formulario = service.obtenerPorId(id).orElse(null);
+        model.addAttribute("formulario", formulario);
+        return "formulario-hipertension";
+    }
 
-        model.addAttribute("success", "Formulario enviado correctamente");
-        model.addAttribute("hipertensionForm", new FormularioHipertension()); // Limpiar formulario
-        return "hipertension";
+    @GetMapping("/eliminar/{id}")
+    public String eliminarFormulario(@PathVariable Long id) {
+        service.eliminar(id);
+        return "redirect:/hipertension/lista";
     }
 }
+

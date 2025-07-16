@@ -1,38 +1,48 @@
 package com.example.hippocardioo.Controller;
 
 import com.example.hippocardioo.Entity.FormularioObesidad;
-
-import jakarta.validation.Valid;
-
+import com.example.hippocardioo.Services.FormularioObesidadService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/formulario")
+@RequestMapping("/obesidad")
 public class FormularioObesidadController {
 
-    @GetMapping("/obesidad")
+    @Autowired
+    private FormularioObesidadService service;
+
+    @GetMapping("/nuevo")
     public String mostrarFormulario(Model model) {
-        model.addAttribute("obesidadForm", new FormularioObesidad());
-        return "obesidad"; // Template en /resources/templates/obesidad.html
+        model.addAttribute("formulario", new FormularioObesidad());
+        return "formulario-obesidad";
     }
 
-    @PostMapping("/obesidad")
-    public String procesarFormulario(
-            @ModelAttribute("obesidadForm") @Valid FormularioObesidad formularioObesidad,
-            BindingResult bindingResult,
-            Model model) {
+    @PostMapping("/guardar")
+    public String guardarFormulario(@ModelAttribute("formulario") FormularioObesidad formulario) {
+        service.guardar(formulario);
+        return "redirect:/obesidad/lista";
+    }
 
-        if (bindingResult.hasErrors()) {
-            return "obesidad";
-        }
+    @GetMapping("/lista")
+    public String listarFormularios(Model model) {
+        model.addAttribute("formularios", service.obtenerTodos());
+        return "lista-obesidad";
+    }
 
-        // Aquí puedes guardar el formulario a la base de datos si es necesario
+    @GetMapping("/editar/{id}")
+    public String editarFormulario(@PathVariable Long id, Model model) {
+        var formulario = service.obtenerPorId(id).orElse(null);
+        model.addAttribute("formulario", formulario);
+        return "formulario-obesidad";
+    }
 
-        model.addAttribute("success", "Formulario enviado correctamente");
-        model.addAttribute("obesidadForm", new FormularioObesidad()); // Limpiar formulario
-        return "obesidad";
+    @GetMapping("/eliminar/{id}")
+    public String eliminarFormulario(@PathVariable Long id) {
+        service.eliminar(id);
+        return "redirect:/obesidad/lista";
     }
 }
+

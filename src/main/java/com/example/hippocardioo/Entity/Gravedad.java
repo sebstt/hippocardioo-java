@@ -12,10 +12,10 @@ public class Gravedad {
     private Long id_gravedad;
 
     @Column(name = "nombre_gravedad", nullable = false, length = 100)
-    private String nombre_gravedad;
+    private String nombreGravedad;
 
     @Column(name = "descripcion_gravedad", nullable = false, length = 100)
-    private String descripcion_gravedad;
+    private String descripcion;
 
 
     public Long getId_gravedad() {
@@ -27,18 +27,18 @@ public class Gravedad {
     }
 
     public String getNombre_gravedad() {
-        return nombre_gravedad;
+        return nombreGravedad;
     }
 
     public void setNombre_gravedad(String nombre_gravedad) {
-        this.nombre_gravedad = nombre_gravedad;
+        this.nombreGravedad = nombre_gravedad;
     }
 
     public String getDescripcion_gravedad() {
-        return descripcion_gravedad;
+        return descripcion;
     }
 
     public void setDescripcion_gravedad(String descripcion_gravedad) {
-        this.descripcion_gravedad = descripcion_gravedad;
+        this.descripcion = descripcion_gravedad;
     }
 }
